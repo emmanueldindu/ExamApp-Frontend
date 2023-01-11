@@ -29,7 +29,7 @@ function Next() {
 
           <div className=" relative w-full mx-auto items-center justify-center text-center pt-12 ">
           <Link to="/main">
-            <button className='bg-black text-yellow-400 items-center text-center relative mx-auto btnn '>
+            <button className='bg-black text-yellow-400 items-center text-center relative mx-auto btnn  hover:bg-white active:bg-black focus:outline outline-black focus:ring focus:ring-black '>
               Next
               </button>
               </Link>
