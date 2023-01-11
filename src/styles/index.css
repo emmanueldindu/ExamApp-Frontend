@@ -5,7 +5,20 @@
 
 body {
   margin: 0;
+  font-family: 'Manrope', sans-serif;
   /* color: #9b3bf5; */
 
 }
 
+
+.btnn{
+  width: 122px;
+  border-radius: 7px;
+  height: 40px;
+  font-size: 18px;
+}
+
+
+.title{
+
+}
