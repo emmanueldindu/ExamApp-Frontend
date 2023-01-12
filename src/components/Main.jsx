@@ -1,6 +1,11 @@
-import React from 'react'
+import { React, useRef } from 'react'
+import { Link } from 'react-router-dom'
+
 
 function Main() {
+  const inputRef = useRef(null)
+
+
   return (
     <div className='bg-[#f1f1f1] h-screen  overflow-x-hidden flex-col w-full max-h-full sm:h-screen md:h-screen lg:h-screen '>
       <div className="h-4/5 w-full relative items-center  py-6  justify-center  mx-auto md:py-3   ">
@@ -21,12 +26,20 @@ function Main() {
           </ol>  
         </div>
 
-        <form id="form" className='w-full item-center relaative p-7 '>
-          <input type="text" name="" className='bg-white innput  relative h-10 items-center  text-slate-600 mx-auto place-content-center' placeholder='Enter a UserName' id="" />
+        <form id="form" className='w-full item-center relative p-7 ml-4 md:ml-24 '>
+          <input type="text" ref={inputRef} name="" className='bg-white innput w-[18rem] relative h-10 items-center  text-slate-600 mx-auto place-content-center' placeholder='Enter a UserName' id="" />
+
 
 
         </form>
-        
+        <div className=" relative w-full mx-auto items-center justify-center text-center pt-12 ">
+          <Link to="/quiz">
+            <button className='bg-black text-yellow-400 items-center text-center relative mx-auto btnn  hover:bg-white active:bg-black focus:outline outline-black focus:ring focus:ring-black '>
+              Start Quiz 
+              </button>
+              </Link>
+
+          </div>
 
         </div>
     

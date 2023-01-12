@@ -26,3 +26,34 @@ body {
   padding: 8px;
 
 }
+
+.btnnn{
+  width: 80px;
+  border-radius: 7px;
+  height: 40px;
+  font-size: 16px;
+}
+
+/* input[type=radio]:checked ~ .check {
+  border: 5px solid yellow;
+}
+
+input[type=radio]:checked ~ .check::before {
+  background: yellow;
+
+}
+
+input[type=radio]:checked ~ .text-primary {
+  color:  yellow;
+}
+
+
+
+.checked {
+  border: 5px solid yellow !important;
+}
+
+
+.checked::before{
+  background: yellow;
+} */
