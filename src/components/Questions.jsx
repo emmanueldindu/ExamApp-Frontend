@@ -51,7 +51,7 @@ function Questions() {
         <h2 className='relative px-8'>{question.question }</h2>
           <div className="relative py-5">
           <ul key={question.id}>
-            {/* omo  hhkh*/}
+            {/* omo */}
 
              
             {
