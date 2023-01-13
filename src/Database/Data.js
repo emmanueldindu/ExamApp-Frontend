@@ -95,7 +95,8 @@ export default [
         id: 8,
         question : "Who made the discovery of X-rays?",
         options: [
-            'Thomas Alva Edison', 'James Watt', 
+            'Thomas Alva Edison',
+            'James Watt', 
 
             "Wilhelm Conrad R&ouml;ntgen",
             'Albert Einstein',            

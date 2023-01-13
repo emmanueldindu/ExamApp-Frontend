@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
+import Data from '../Database/Data'
 
 function Questions() {
 
@@ -24,37 +24,50 @@ function Questions() {
 
     // return console.log(response)
     
-    const url = 'https://opentdb.com/api.php?amount=10&category=17&difficulty=medium&type=multiple';
+//     const url = 'https://opentdb.com/api.php?amount=10&category=17&difficulty=medium&type=multiple';
 
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    const questions = data.results;
-    questions.forEach(question => {
-    //   console.log(question.question); // prints the question text
-    //   console.log(question.correct_answer); // prints the correct answer
-      console.log(question); // prints an array of incorrect answers
-    });
-  })
-  .catch(error => {
-    console.error(error);
-  });
+// fetch(url)
+//   .then(response => response.json())
+//   .then(data => {
+//     const questions = data.results;
+//     questions.forEach(question => {
+//     //   console.log(question.question); // prints the question text
+//     //   console.log(question.correct_answer); // prints the correct answer
+//       console.log(question); // prints an array of incorrect answers
+//     });
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
+  const question = Data[0]
+  
+  useEffect(() => {
+    console.log(question)
+    }, [])
+    
     
     return (
       <div className='w-full p-6 flex-1'>
-          <h2 className='relative px-8'>Lorem ipsum dolor sit amet consectetur.</h2>
+        <h2 className='relative px-8'>{question.question }</h2>
           <div className="relative py-5">
-          <ul >
-              <li>
-                      <input
-                          type="radio"
-                            name="options"
-                            value={false}
-                            id="q1"
-                            onChange={onSelect()} />
-                        <label className='text-primary' htmlFor="q1">option</label>
-                        <div className="check "></div>
-              </li>
+          <ul key={question.id}>
+            {/* omo */}
+
+             
+            {
+              question.options.map((q, i) => (
+                <li key={i}>
+                <input
+                    type="radio"
+                      name="options"
+                      value={false}
+                      id={`q${i}-option`}
+                      onChange={onSelect()} />
+                  <label className='text-primary' htmlFor={`q${i}-option`}>{q}</label>
+                  <div className="check "></div>
+        </li>
+              ))
+            }
                 </ul>
                 
               </div>
