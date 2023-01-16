@@ -43,9 +43,28 @@ function Result() {
               Restart 
               </button>
           </Link>
-          </div>
-      </div>
+        </div>
       
+      </div>
+      <table className="table-auto w-full md:w-2/3 mx-auto text-left pt-7 relative p-7">
+        <thead>
+    <tr>
+      <th>Name</th>
+      <th>Atempts</th>
+      <th>Exam points</th>
+      <th>Result</th>
+              
+            </tr>
+  </thead>
+  <tbody>
+    <tr className='mx-auto'>
+      <td>odoi</td>
+      <td>03</td>
+      <td>20</td>
+      <td>Passed</td>
+            </tr>
+            </tbody>
+        </table>
   
   </div>
   )
