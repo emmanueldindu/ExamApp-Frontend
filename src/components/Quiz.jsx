@@ -1,9 +1,13 @@
 import React from 'react'
 import Questions from './Questions'
-
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
 function Quiz() {
 
-
+  const state = useSelector(state => state)
+  useEffect(() => {
+  // console.log(state)
+  }, [])
   function onPrev() {
   console.log('Prev')
   

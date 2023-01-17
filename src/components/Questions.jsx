@@ -1,49 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import Data from '../Database/Data'
-
+import { useFetchQuestion } from '../hooks/FetchQuestions'
 function Questions() {
 
     const [checked, setChecked] = useState(undefined)
-    
-    function onSelect() {
-        console.log('radio change')
-        // setChecked(true)
-    }
-        // }const options = {
-    //     method: 'GET',
-    //     headers: {
-    //         'X-RapidAPI-Key': '5abf4a4efemsh5079ec851d3106cp132fc7jsnb650f9a44519',
-    //         'X-RapidAPI-Host': 'ases-quiz-api1.p.rapidapi.com'
-    //     }
-    // };
-    
-    // fetch('https://ases-quiz-api1.p.rapidapi.com/questions/random/20', options)
-    //     .then(response => response.json())
-    //     .then(response => console.log(response))
-    //     .catch(err => console.error(err))
-
-    // return console.log(response)
-    
-//     const url = 'https://opentdb.com/api.php?amount=10&category=17&difficulty=medium&type=multiple';
-
-// fetch(url)
-//   .then(response => response.json())
-//   .then(data => {
-//     const questions = data.results;
-//     questions.forEach(question => {
-//     //   console.log(question.question); // prints the question text
-//     //   console.log(question.correct_answer); // prints the correct answer
-//       console.log(question); // prints an array of incorrect answers
-//     });
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
-  const question = Data[0]
+const [] = useFetchQuestion()
+    const question = Data[0] 
+ 
   
-  useEffect(() => {
-    console.log(question)
-    }, [])
+  function onSelect() {
+   
+        // setChecked(true)
+  }
+  
+
+
+  
+
     
     
     return (
