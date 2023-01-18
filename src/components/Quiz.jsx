@@ -4,30 +4,54 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { MoveNextQuestion } from '../hooks/FetchQuestions'
 import { MovePrevQuestion } from '../hooks/FetchQuestions'
+import { PushAnswer } from '../hooks/setResult'
+import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 
 function Quiz() {
 
-  const state = useSelector(state => state.questions.trace)
+  // const trace = useSelector(state => state.questions.trace)
+const [check, setChecked] = useState(undefined)
+  const { queue, trace } = useSelector(state => state.questions);
+  const state = useSelector(state => state.result.result);
 
   const dispatch = useDispatch()
-  useEffect(() => {
+  
+    useEffect(() => {
+
   console.log(state)
-  }, [])
+  },)
   function onPrev() {
-    console.log('Prev')
-    dispatch(MovePrevQuestion())
-    console.log(state)
+    if (trace > 0) {
+      // console.log('Prev')
+      dispatch(MovePrevQuestion())  
+    }
+     
+    // console.log(trace)
   
   }  
   
   function onNext() {
-    console.log('Next')
-    dispatch(MoveNextQuestion())
+   
+    if (trace < queue.length) {
+      console.log('Next')
+      dispatch(MoveNextQuestion())
+      dispatch(PushAnswer(check))
+      // console.log(state)
+     
+    }
     // console.log(MoveNextQuestion())
-    console.log(state)
+    // console.log(trace)
     
   }
+  function onChecked(check) {
+    console.log(check)
+    setChecked(check)
+  
+  }
+  
 
+  
   return (
     <div className='bg-[#f1f1f1] h-screen  overflow-x-hidden flex-col w-full max-h-full sm:h-screen md:h-screen lg:h-screen '>
       
@@ -37,7 +61,7 @@ function Quiz() {
         QuizSet
       </h1>
         </div>
-        <Questions />
+        <Questions onChecked={onChecked} />
 
       </div>
       <div className="grid grid-cols-2">

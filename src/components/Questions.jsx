@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useFetchQuestion } from '../hooks/FetchQuestions'
 import { useSelector } from 'react-redux'
 
-function Questions() {
+function Questions({onChecked}) {
 
     const [checked, setChecked] = useState(undefined)
 
@@ -18,9 +18,9 @@ function Questions() {
   
 
   
-  function onSelect() {
-   
-        // setChecked(true)
+  function onSelect(i) {
+   onChecked(i)
+        // console.log(i)
   }
   
   if(isLoading) return <h3>isLoading</h3>
@@ -46,7 +46,7 @@ function Questions() {
                       name="options"
                       value={false}
                       id={`q${i}-option`}
-                      onChange={onSelect()} />
+                      onChange={() => onSelect(i)} />
                   <label className='text-primary' htmlFor={`q${i}-option`}>{q}</label>
                   <div className="check "></div>
         </li>
