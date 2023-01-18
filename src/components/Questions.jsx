@@ -4,9 +4,17 @@ import { useFetchQuestion } from '../hooks/FetchQuestions'
 function Questions() {
 
     const [checked, setChecked] = useState(undefined)
-const [] = useFetchQuestion()
-    const question = Data[0] 
- 
+
+  const question = Data[0] 
+  
+  const [{ isLoading, apiData, serverError }] = useFetchQuestion()
+  useEffect(() => {
+  console.log(isLoading)
+
+    console.log(apiData)
+    // console.log(serverError)
+    
+    }, [])  
   
   function onSelect() {
    
