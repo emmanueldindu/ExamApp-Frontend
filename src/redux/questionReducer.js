@@ -17,16 +17,22 @@ export const questionReducer = createSlice({
             }
         },
         moveNextAction: (state, action) => {
-            let randomNum = Math.floor(Math.random() * 9) + 1;
+            let randomNum = Math.floor(Math.random() * 8) + 1;
             return {
                 ...state,
-                trace: state.trace + randomNum
+                trace: state.trace + 1
+            }
+        },
+        movePrevAction: (state, action) => {
+            return {
+                ...state,
+                trace : state.trace - 1
             }
         }
     }
 })
 
 
-export const { startExamAction, moveNextAction } = questionReducer.actions;
+export const { startExamAction, moveNextAction, movePrevAction } = questionReducer.actions;
 
 export default questionReducer.reducer;

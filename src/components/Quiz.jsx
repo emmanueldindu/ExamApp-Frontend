@@ -1,20 +1,30 @@
 import React from 'react'
 import Questions from './Questions'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
+import { MoveNextQuestion } from '../hooks/FetchQuestions'
+import { MovePrevQuestion } from '../hooks/FetchQuestions'
+
 function Quiz() {
 
-  const state = useSelector(state => state)
+  const state = useSelector(state => state.questions.trace)
+
+  const dispatch = useDispatch()
   useEffect(() => {
-  // console.log(state)
+  console.log(state)
   }, [])
   function onPrev() {
-  console.log('Prev')
+    console.log('Prev')
+    dispatch(MovePrevQuestion())
+    console.log(state)
   
   }  
   
   function onNext() {
     console.log('Next')
+    dispatch(MoveNextQuestion())
+    // console.log(MoveNextQuestion())
+    console.log(state)
     
   }
 
