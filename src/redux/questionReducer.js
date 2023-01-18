@@ -15,11 +15,18 @@ export const questionReducer = createSlice({
                 ...state,
                 queue: action.payload
             }
+        },
+        moveNextAction: (state, action) => {
+            let randomNum = Math.floor(Math.random() * 9) + 1;
+            return {
+                ...state,
+                trace: state.trace + randomNum
+            }
         }
     }
 })
 
 
-export const { startExamAction } = questionReducer.actions;
+export const { startExamAction, moveNextAction } = questionReducer.actions;
 
 export default questionReducer.reducer;

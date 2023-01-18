@@ -6,12 +6,12 @@ function Quiz() {
 
   const state = useSelector(state => state)
   useEffect(() => {
-  console.log(state)
+  // console.log(state)
   }, [])
   function onPrev() {
   console.log('Prev')
   
-  }
+  }  
   
   function onNext() {
     console.log('Next')

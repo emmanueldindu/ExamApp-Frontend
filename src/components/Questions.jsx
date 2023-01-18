@@ -1,42 +1,45 @@
 import React, { useState, useEffect } from 'react'
-import Data from '../Database/Data'
+
 import { useFetchQuestion } from '../hooks/FetchQuestions'
+import { useSelector } from 'react-redux'
+
 function Questions() {
 
     const [checked, setChecked] = useState(undefined)
 
-  const question = Data[0] 
-  
-  const [{ isLoading, apiData, serverError }] = useFetchQuestion()
-  useEffect(() => {
-  console.log(isLoading)
-
-    console.log(apiData)
-    // console.log(serverError)
     
-    }, [])  
+    const [{ isLoading, apiData, serverError }] = useFetchQuestion()
+    
+  const questions  = useSelector(state => state.questions.queue[state.questions.trace])
+  const trace = useSelector(state => state.questions.trace)
+  useEffect(() => {
+    // console.log(questions)
+  }, )
+  
+
   
   function onSelect() {
    
         // setChecked(true)
   }
   
-
-
+  if(isLoading) return <h3>isLoading</h3>
+  if (isLoading) return <h3>{serverError || 'unknown error'}</h3>
+  
   
 
     
     
     return (
       <div className='w-full p-6 flex-1'>
-        <h2 className='relative px-8'>{question.question }</h2>
+        <h2 className='relative px-8'>{questions?.question }</h2>
           <div className="relative py-5">
-          <ul key={question.id}>
-            {/* omo  hhkh ssasa*/}
+          <ul key={questions?.id}>
+
 
              
             {
-              question.options.map((q, i) => (
+              questions?.options.map((q, i) => (
                 <li key={i}>
                 <input
                     type="radio"
