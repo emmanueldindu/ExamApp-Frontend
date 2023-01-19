@@ -46,7 +46,7 @@ function Result() {
         </div>
       
       </div>
-      <table className="table-auto w-full md:w-2/3 mx-auto text-left pt-7 relative p-7">
+      <table className="table-auto w-full overflow-x-scroll md:w-2/3 mx-auto text-left pt-7 relative p-7">
         <thead>
     <tr>
       <th>Name</th>

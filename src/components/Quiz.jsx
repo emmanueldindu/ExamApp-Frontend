@@ -7,19 +7,20 @@ import { MovePrevQuestion } from '../hooks/FetchQuestions'
 import { PushAnswer } from '../hooks/setResult'
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
+// import Result from '.Result'
 
 function Quiz() {
 
   // const trace = useSelector(state => state.questions.trace)
 const [check, setChecked] = useState(undefined)
   const { queue, trace } = useSelector(state => state.questions);
-  const state = useSelector(state => state.result.result);
+  const result = useSelector(state => state.result.result);
 
   const dispatch = useDispatch()
   
     useEffect(() => {
 
-  console.log(state)
+  console.log(result)
   },)
   function onPrev() {
     if (trace > 0) {
@@ -49,9 +50,13 @@ const [check, setChecked] = useState(undefined)
     setChecked(check)
   
   }
+
+  if (result.length && result.length >= queue.length) {
+   return <Navigate to={'/result'}></Navigate>
+  }
   
 
-  
+
   return (
     <div className='bg-[#f1f1f1] h-screen  overflow-x-hidden flex-col w-full max-h-full sm:h-screen md:h-screen lg:h-screen '>
       
