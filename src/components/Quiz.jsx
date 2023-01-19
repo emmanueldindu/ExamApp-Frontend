@@ -20,7 +20,7 @@ const [check, setChecked] = useState(undefined)
   
     useEffect(() => {
 
-  console.log(result)
+  // console.log(result)
   },)
   function onPrev() {
     if (trace > 0) {
@@ -37,7 +37,9 @@ const [check, setChecked] = useState(undefined)
     if (trace < queue.length) {
       console.log('Next')
       dispatch(MoveNextQuestion())
-      dispatch(PushAnswer(check))
+      if (result.length <= trace) {
+        dispatch(PushAnswer(check))
+    }
       // console.log(state)
      
     }

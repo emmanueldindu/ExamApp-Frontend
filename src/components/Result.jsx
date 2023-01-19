@@ -1,11 +1,14 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-
-
+import { resetAllAction } from '../redux/questionReducer'
+import { resetResultAction } from '../redux/resultReducer'
 function Result() {
+  const dispatch = useDispatch()
 
   function onRestart() {
-  console.log('restart')
+    dispatch(resetAllAction())
+    dispatch(resetResultAction())
   
 }
 
