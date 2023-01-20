@@ -33,7 +33,17 @@ body {
   height: 40px;
   font-size: 16px;
 }
+input[type="radio"] {
+  color: red;
+}
 
+.custom-radio {
+  color: red;
+}
+
+input[type="radio"]:checked {
+  color: red;
+}
 /* input[type=radio]:checked ~ .check {
   border: 5px solid yellow;
 }
@@ -57,3 +67,4 @@ input[type=radio]:checked ~ .text-primary {
 .checked::before{
   background: yellow;
 } */
+

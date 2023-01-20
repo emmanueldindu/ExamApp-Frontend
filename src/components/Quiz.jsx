@@ -72,9 +72,10 @@ const [check, setChecked] = useState(undefined)
 
       </div>
       <div className="grid grid-cols-2">
-      <button onClick={onPrev} className='bg-yellow-400 text-black items-center text-center relative mx-auto btnnn  hover:bg-white hover:text-yellow-400 active:bg-black focus:outline outline-black focus:ring focus:ring-black '>
-              Prev 
-              </button>
+        {trace > 0 ?  
+      <button onClick={onPrev} className='bg-yellow-400 text-black items-center text-center relative mx-auto btnnn  hover:bg-white hover:text-yellow-400 active:bg-black focus:outline outline-black focus:ring focus:ring-black '>Prev</button>
+      : <div></div>  
+      }
               <button onClick={onNext} className='bg-black text-yellow-400 items-center text-center relative mx-auto btnnn  hover:bg-white active:bg-black focus:outline outline-black focus:ring focus:ring-black '>
               Next 
               </button>
