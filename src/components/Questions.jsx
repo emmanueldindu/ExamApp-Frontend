@@ -11,9 +11,12 @@ function Questions({onChecked}) {
   
   const [checked, setChecked] = useState(undefined)
   const [allChecked, setAllChecked] = useState(false);
+
+  //selecting the check
   const trace = useSelector(state => state.questions)
-  
+  //trace is thhe particular question
   const result = useSelector(state => state.result.result)
+  // result or user choice
   // localStorage.setItem('result', result);
     
   const [{ isLoading, apiData, serverError }] = useFetchQuestion()
@@ -85,7 +88,11 @@ console.log(result)
                     // checked={checked === result[trace] && checked !== undefined ? true : false}
                   // checked={result[trace] == i ? checked : ''}
                   // checked={result[trace]== i}
-                    checked={ false ? '' : result == i  }
+                    // checked={false ? '' : result == i}
+                    
+// oncheck the user should be albe to select his option 
+
+
                     // checked={result[trace] == i ? checked : ''}
                   // checked={checked}
                     // checked={'' result[trace]== i}
