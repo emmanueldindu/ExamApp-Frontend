@@ -12,31 +12,24 @@ export default function Questions({onChecked}) {
   
 
   const {trace} = useSelector(state => state.questions)
-  //trace is thhe particular question
+
   const result = useSelector(state => state.result.result)
-  // result or user choice
-  // localStorage.setItem('result', result);
+
   
   const [{ isLoading, apiData, serverError }] = useFetchQuestion()
   
   const questions  = useSelector(state => state.questions.queue[state.questions.trace])
   const dispatch = useDispatch()
-  // const trace = useSelector(state => state.questions.trace)
+
   useEffect(() => { 
 console.log(result)
     dispatch(updateResult({ trace, checked }))
-    // console.log(trace)
+
     
   }, [checked])
   
 
   
-    // const [value, setValue] = useState('')
-
-    // const handleChange = (event) => {
-    //   setValue(event.target.value)
-    //   localStorage.setItem('myKey', event.target.value)
-    // }
 
   
   function onSelect(i) {
@@ -44,16 +37,14 @@ console.log(result)
     setChecked(i)
     dispatch(updateResult({ trace, checked }))
 
-    // handleChange(i)
-    
-        // console.log(i)
+  
   }
   
   if(isLoading) return <h3>isLoading</h3>
   if (isLoading) return <h3>{serverError || 'unknown error'}</h3>
   
   function handleCheckAll() {
-    // console.log(result)
+    
     setAllChecked(!allChecked);
 }
 
@@ -74,7 +65,7 @@ console.log(result)
                     type="checkbox"
                       name="options"
                     value={false}
-                    // className='custom-radio'
+                   
                       id={`q${i}-option`}
                     onChange={() => 
                       onSelect(i)
@@ -85,8 +76,9 @@ console.log(result)
 
                   />
                   <label className='text-primary' htmlFor={`q${i}-option`}>{q}</label>
-        {/* <div className={`check ${result[trace] == i ? 'checked' : ''}`}></div> */}
-<div className={`check ${result[trace] === i ? 'checked' : ''} `}></div>
+    
+                  <div className={`check ${result[trace] === i ? 'checked' : ''} `}></div>
+                  
 
         </li>
               ))
