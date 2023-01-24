@@ -35,18 +35,13 @@ console.log(result)
   function onSelect(i) {
     onChecked(i)
     setChecked(i)
-    dispatch(updateResult({ trace, checked }))
-
-  
+   dispatch(updateResult({trace, checked}))
   }
   
   if(isLoading) return <h3>isLoading</h3>
   if (isLoading) return <h3>{serverError || 'unknown error'}</h3>
   
-  function handleCheckAll() {
-    
-    setAllChecked(!allChecked);
-}
+
 
     
     
@@ -63,16 +58,12 @@ console.log(result)
                 <li key={i}>
                 <input
                     type="checkbox"
-                      name="options"
+                    name="options"
                     value={false}
                    
                       id={`q${i}-option`}
                     onChange={() => 
-                      onSelect(i)
-                    
-                    
-                    
-                    }
+                      onSelect(i) }
 
                   />
                   <label className='text-primary' htmlFor={`q${i}-option`}>{q}</label>
