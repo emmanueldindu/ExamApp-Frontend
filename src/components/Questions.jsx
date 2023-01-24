@@ -2,26 +2,25 @@ import React, { useState, useEffect } from 'react'
 
 import { useFetchQuestion } from '../hooks/FetchQuestions'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateResultAction } from '../redux/resultReducer'
 import { updateResult } from '../hooks/setResult'
 
-function Questions({onChecked}) {
+export default function Questions({onChecked}) {
 
-  const dispatch = useDispatch()
   
   const [checked, setChecked] = useState(undefined)
   const [allChecked, setAllChecked] = useState(false);
+  
 
-  //selecting the check
-  const trace = useSelector(state => state.questions)
+  const {trace} = useSelector(state => state.questions)
   //trace is thhe particular question
   const result = useSelector(state => state.result.result)
   // result or user choice
   // localStorage.setItem('result', result);
-    
+  
   const [{ isLoading, apiData, serverError }] = useFetchQuestion()
-    
+  
   const questions  = useSelector(state => state.questions.queue[state.questions.trace])
+  const dispatch = useDispatch()
   // const trace = useSelector(state => state.questions.trace)
   useEffect(() => { 
 console.log(result)
@@ -43,6 +42,8 @@ console.log(result)
   function onSelect(i) {
     onChecked(i)
     setChecked(i)
+    dispatch(updateResult({ trace, checked }))
+
     // handleChange(i)
     
         // console.log(i)
@@ -75,32 +76,18 @@ console.log(result)
                     value={false}
                     // className='custom-radio'
                       id={`q${i}-option`}
-                    onChange={() => {
+                    onChange={() => 
                       onSelect(i)
-                      // handleChange(i)
-                      
-                      // setAllChecked(i)
-                    }
+                    
+                    
                     
                     }
 
-
-                    // checked={checked === result[trace] && checked !== undefined ? true : false}
-                  // checked={result[trace] == i ? checked : ''}
-                  // checked={result[trace]== i}
-                    // checked={false ? '' : result == i}
-                    
-// oncheck the user should be albe to select his option 
-
-
-                    // checked={result[trace] == i ? checked : ''}
-                  // checked={checked}
-                    // checked={'' result[trace]== i}
-                    // checked={}
-                    
                   />
                   <label className='text-primary' htmlFor={`q${i}-option`}>{q}</label>
-                  {/* {let myValue = localStorage} */}
+        {/* <div className={`check ${result[trace] == i ? 'checked' : ''}`}></div> */}
+<div className={`check ${result[trace] === i ? 'checked' : ''} `}></div>
+
         </li>
               ))
             }
@@ -111,4 +98,4 @@ console.log(result)
   )
 }
 
-export default Questions
+
