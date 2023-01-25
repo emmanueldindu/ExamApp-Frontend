@@ -1,10 +1,17 @@
 import { React, useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { setUserId } from '../redux/resultReducer'
 
 
 function Main() {
   const inputRef = useRef(null)
-
+  const dispatch = useDispatch()
+  function startQuiz() {
+    if (inputRef.current?.value) {
+     dispatch(setUserId(inputRef.current?.value))
+   }
+  }
 
   return (
     <div className='bg-[#f1f1f1] h-screen  overflow-x-hidden flex-col w-full max-h-full sm:h-screen md:h-screen lg:h-screen '>
@@ -34,7 +41,7 @@ function Main() {
         </form>
         <div className=" relative w-full mx-auto items-center justify-center text-center pt-12 ">
           <Link to="/quiz">
-            <button className='bg-black text-yellow-400 items-center text-center relative mx-auto btnn  hover:bg-white active:bg-black focus:outline outline-black focus:ring focus:ring-black '>
+            <button onClick={startQuiz} className='bg-black text-yellow-400 items-center text-center relative mx-auto btnn  hover:bg-white active:bg-black focus:outline outline-black focus:ring focus:ring-black '>
               Start Quiz 
               </button>
               </Link>

@@ -4,17 +4,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { resetAllAction } from '../redux/questionReducer'
 import { resetResultAction } from '../redux/resultReducer'
+import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper'
+
 function Result() {
   const dispatch = useDispatch()
  const {questions : {queue, answers}, result: {result, userId}} = useSelector(state => state)
 
   useEffect(() => {
-   console.log(result)
+   console.log(flag)
   })
 
   const totalPoints = queue.length * 10;
-  const attempts = 
-
+  const attempts =  attempts_Number(result)
+  const earnPoint = earnPoints_Number(result, answers, 10)
+  const flag = flagResult(totalPoints, earnPoint)
   function onRestart() {
     dispatch(resetAllAction())
     dispatch(resetResultAction())
@@ -41,11 +44,14 @@ function Result() {
             <p className='font-bold'>Quiz Result</p>
           </div>
           <div className="mx-auto grid grid-cols-1 gap-y-3">Odoi
-            <p>50</p>
-          <p>05</p>
-          <p>03</p>
-          <p>20</p>
-          <p className='font-bold'>passed</p>
+            <p>{ totalPoints || 0}</p>
+            <p>{ queue.length}</p>
+            <p>{ attempts}</p>
+            <p>{earnPoint || 0 }</p>
+            <p className='font-bold'> 
+              <span style={{ color: `${flag ? 'green' : 'red'}` }} >{flag ? 'Passed 🙂 ' : 'failed 😢 '}</span>
+
+            </p>
           </div>
           
    </div>
@@ -73,7 +79,10 @@ function Result() {
       <td>odoi</td>
       <td>03</td>
       <td>20</td>
-      <td>Passed</td>
+            <td>
+              
+              Passed
+              </td>
             </tr>
             </tbody>
         </table>

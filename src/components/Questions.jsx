@@ -8,16 +8,11 @@ export default function Questions({onChecked}) {
 
   
   const [checked, setChecked] = useState(undefined)
-  const [allChecked, setAllChecked] = useState(false);
-  
-
   const {trace} = useSelector(state => state.questions)
-
   const result = useSelector(state => state.result.result)
-useSelector(state => console.log(state))
+  useSelector(state => console.log(state))
   
   const [{ isLoading, apiData, serverError }] = useFetchQuestion()
-  
   const questions  = useSelector(state => state.questions.queue[state.questions.trace])
   const dispatch = useDispatch()
 
@@ -35,7 +30,8 @@ console.log(result)
   function onSelect(i) {
     onChecked(i)
     setChecked(i)
-   dispatch(updateResult({trace, checked}))
+    dispatch()
+   
   }
   
   if(isLoading) return <h3>isLoading</h3>
@@ -68,7 +64,7 @@ console.log(result)
                   />
                   <label className='text-primary' htmlFor={`q${i}-option`}>{q}</label>
     
-                  <div className={`check ${result[trace] === i ? 'checked' : ''} `}></div>
+                  <div className={`check ${result[trace] == i ? 'checked' : ''} `}></div>
                   
 
         </li>
@@ -77,7 +73,8 @@ console.log(result)
                 </ul>
                 
               </div>
-    </div>
+      </div>
+      
   )
 }
 

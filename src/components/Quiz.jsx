@@ -42,7 +42,7 @@ const [check, setChecked] = useState(undefined)
     }
     // console.log(MoveNextQuestion())
     // console.log(trace)
-    
+    setChecked(undefined)
   }
   function onChecked(check) {
     console.log(check)
