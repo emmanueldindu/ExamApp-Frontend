@@ -9,7 +9,7 @@ try {
 }
 }
 
-export const updateResult = (index) => async (dispatch) => {
+export const updateResult = (index) => async (dispatch) => { 
     try {
         dispatch(Action.updateResultAction(index))
     } catch (error) {

@@ -138,3 +138,7 @@ export default [
 
 
 ]
+
+// 2 0 0 3 2 3 0 2 1 1
+
+export const answers = [2, 0, 0, 3, 2, 3, 0, 2, 1, 1]
