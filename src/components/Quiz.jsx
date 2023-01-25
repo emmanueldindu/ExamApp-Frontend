@@ -18,10 +18,7 @@ const [check, setChecked] = useState(undefined)
 
   const dispatch = useDispatch()
   
-    useEffect(() => {
-
-  // console.log(result)
-  },)
+  
   function onPrev() {
     if (trace > 0) {
       // console.log('Prev')

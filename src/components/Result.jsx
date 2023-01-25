@@ -1,10 +1,19 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { resetAllAction } from '../redux/questionReducer'
 import { resetResultAction } from '../redux/resultReducer'
 function Result() {
   const dispatch = useDispatch()
+ const {questions : {queue, answers}, result: {result, userId}} = useSelector(state => state)
+
+  useEffect(() => {
+   console.log(result)
+  })
+
+  const totalPoints = queue.length * 10;
+  const attempts = 
 
   function onRestart() {
     dispatch(resetAllAction())

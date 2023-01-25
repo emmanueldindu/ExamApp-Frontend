@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
-import Data from "../Database/Data";
+import Data, {answers} from "../Database/Data";
 
 /** redux actions */
 import * as Action from '../redux/questionReducer'
@@ -20,17 +20,17 @@ export const useFetchQuestion = () => {
 
                 if (question.length > 0) {
                     setGetData(prev => ({ ...prev, isLoading: false }));
-                    setGetData(prev => ({ ...prev, apiData: question }));
+                    setGetData(prev => ({ ...prev, apiData: question, answers }));
 
                     /** dispatch an action */
-                    dispatch(Action.startExamAction(question))
+                    dispatch(Action.startExamAction({question, answers}))
                 } else {
                     throw new Error("No Question Avalibale");
                 }
             } catch (error) {
                 setGetData(prev => ({ ...prev, isLoading: false }));
                 setGetData(prev => ({ ...prev, serverError: error }));
-            }
+            } 
         })();
     }, [dispatch]);
 

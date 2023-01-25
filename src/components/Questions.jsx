@@ -14,7 +14,7 @@ export default function Questions({onChecked}) {
   const {trace} = useSelector(state => state.questions)
 
   const result = useSelector(state => state.result.result)
-
+useSelector(state => console.log(state))
   
   const [{ isLoading, apiData, serverError }] = useFetchQuestion()
   
