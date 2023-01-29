@@ -10,14 +10,14 @@ export default function Questions({onChecked}) {
   const [checked, setChecked] = useState(undefined)
   const {trace} = useSelector(state => state.questions)
   const result = useSelector(state => state.result.result)
-  useSelector(state => console.log(state))
+ 
   
-  const [{ isLoading, apiData, serverError }] = useFetchQuestion()
+  const [{ isLoading,  serverError }] = useFetchQuestion()
   const questions  = useSelector(state => state.questions.queue[state.questions.trace])
   const dispatch = useDispatch()
 
   useEffect(() => { 
-console.log(result)
+
     dispatch(updateResult({ trace, checked }))
 
     
@@ -30,11 +30,10 @@ console.log(result)
   function onSelect(i) {
     onChecked(i)
     setChecked(i)
-    dispatch()
-   
+    dispatch(updateResult({ trace, checked}))
   }
   
-  if(isLoading) return <h3>isLoading</h3>
+  if(isLoading) return <h3 className='mx-auto relative '>Loading Questions</h3>
   if (isLoading) return <h3>{serverError || 'unknown error'}</h3>
   
 

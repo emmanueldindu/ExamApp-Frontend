@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import { getServerData } from '../helper/helper'
+
 
 function Table() {
     const [data, setData] = useState([])
@@ -6,7 +8,7 @@ function Table() {
         getServerData(`${process.env.REACT_APP_SERVER_HOSTNAME}/api/result`, (res) => {
           setData(res)
         })
-      })
+      }, [])
   return (
     <div>
        <table className="table-auto w-full overflow-x-scroll md:w-2/3 mx-auto text-left pt-7 relative p-7">
@@ -32,7 +34,8 @@ function Table() {
                 
             <td>
               
-             {v?.achived || ""}
+                        {v?.achived || ""}
+                     
               </td>
             </tr>
             ))

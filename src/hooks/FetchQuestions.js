@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
-import Data, {answers} from "../Database/Data";
+
 import { getServerData } from "../helper/helper";
 
 /** redux actions */
@@ -18,7 +18,7 @@ export const useFetchQuestion = () => {
         (async () => {
             try {
              const [{questions, answers}] =  await getServerData(`${process.env.REACT_APP_SERVER_HOSTNAME}/api/questions`, (data) => data)
-              console.log({questions, answers})  
+           
                 if (questions.length > 0) {
                     setGetData(prev => ({ ...prev, isLoading: false }));
                     setGetData(prev => ({ ...prev, apiData: questions, answers }));

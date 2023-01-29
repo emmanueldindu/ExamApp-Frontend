@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { resetAllAction } from '../redux/questionReducer'
 import { resetResultAction } from '../redux/resultReducer'
-import { attempts_Number, earnPoints_Number, flagResult, getServerData } from '../helper/helper'
+import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper'
 import { usePublishResult } from '../hooks/setResult'
 import Table from './Table'
 
@@ -21,7 +21,7 @@ function Result() {
  const {questions : {queue, answers}, result: {result, userId}} = useSelector(state => state)
 
   useEffect(() => {
-   console.log(flag)
+  
   })
 
   const totalPoints = queue.length * 10;
@@ -29,7 +29,13 @@ function Result() {
   const earnPoint = earnPoints_Number(result, answers, 10)
   const flag = flagResult(totalPoints, earnPoint)
   
-  usePublishResult({result, username : userId, attempts, points: earnPoint, achived: flag ? "Passed" : "Failed"})
+  usePublishResult({
+    result,
+    username: userId,
+    attempts,
+    points: earnPoint,
+    achived: flag ? "Passed" : "Failed"
+  })
   
   function onRestart() {
     dispatch(resetAllAction())
@@ -57,7 +63,7 @@ function Result() {
             <p>Total Earned Points</p>
             <p className='font-bold'>Quiz Result</p>
           </div>
-          <div className="mx-auto grid grid-cols-1 gap-y-3">Odoi
+          <div className="mx-auto grid grid-cols-1 gap-y-3">{userId}
             <p>{ totalPoints || 0}</p>
             <p>{ queue.length}</p>
             <p>{ attempts}</p>

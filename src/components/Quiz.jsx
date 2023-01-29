@@ -1,17 +1,17 @@
 import React from 'react'
 import Questions from './Questions'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+
 import { MoveNextQuestion } from '../hooks/FetchQuestions'
 import { MovePrevQuestion } from '../hooks/FetchQuestions'
 import { PushAnswer } from '../hooks/setResult'
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
-// import Result from '.Result'
+
 
 function Quiz() {
 
-  // const trace = useSelector(state => state.questions.trace)
+
 const [check, setChecked] = useState(undefined)
   const { queue, trace } = useSelector(state => state.questions);
   const result = useSelector(state => state.result.result);
@@ -21,31 +21,28 @@ const [check, setChecked] = useState(undefined)
   
   function onPrev() {
     if (trace > 0) {
-      // console.log('Prev')
+
       dispatch(MovePrevQuestion())  
     }
-     
-    // console.log(trace)
+ 
   
   }  
   
   function onNext() {
    
     if (trace < queue.length) {
-      console.log('Next')
+    
       dispatch(MoveNextQuestion())
       if (result.length <= trace) {
         dispatch(PushAnswer(check))
     }
-      // console.log(state)
      
     }
-    // console.log(MoveNextQuestion())
-    // console.log(trace)
+    
     setChecked(undefined)
   }
   function onChecked(check) {
-    console.log(check)
+  
     setChecked(check)
   
   }
