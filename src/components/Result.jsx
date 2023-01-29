@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { resetAllAction } from '../redux/questionReducer'
 import { resetResultAction } from '../redux/resultReducer'
-import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper'
+import { attempts_Number, earnPoints_Number, flagResult, getServerData } from '../helper/helper'
+import { usePublishResult } from '../hooks/setResult'
+import Table from './Table'
+
 
 function Result() {
+
+
+
+  
+
+  
+  
   const dispatch = useDispatch()
  const {questions : {queue, answers}, result: {result, userId}} = useSelector(state => state)
 
@@ -18,11 +28,15 @@ function Result() {
   const attempts =  attempts_Number(result)
   const earnPoint = earnPoints_Number(result, answers, 10)
   const flag = flagResult(totalPoints, earnPoint)
+  
+  usePublishResult({result, username : userId, attempts, points: earnPoint, achived: flag ? "Passed" : "Failed"})
+  
   function onRestart() {
     dispatch(resetAllAction())
     dispatch(resetResultAction())
   
-}
+  }
+  
 
   return (
     <div className='bg-[#f1f1f1] h-screen  overflow-x-hidden flex-col w-full max-h-full sm:h-screen md:h-screen lg:h-screen '>
@@ -64,29 +78,7 @@ function Result() {
         </div>
       
       </div>
-      <table className="table-auto w-full overflow-x-scroll md:w-2/3 mx-auto text-left pt-7 relative p-7">
-        <thead>
-    <tr>
-      <th>Name</th>
-      <th>Atempts</th>
-      <th>Exam points</th>
-      <th>Result</th>
-              
-            </tr>
-  </thead>
-  <tbody>
-    <tr className='mx-auto'>
-      <td>odoi</td>
-      <td>03</td>
-      <td>20</td>
-            <td>
-              
-              Passed
-              </td>
-            </tr>
-            </tbody>
-        </table>
-  
+     <Table></Table>
   </div>
   )
 }
