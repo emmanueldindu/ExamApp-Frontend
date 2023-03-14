@@ -17,7 +17,7 @@ export const useFetchQuestion = () => {
         /** async function fetch backend data */
         (async () => {
             try {
-             const [{questions, answers}] =  await getServerData(`https://api-exam.onrender.com/api/questions`, (data) => data)
+             const [{questions, answers}] =  await getServerData(`https://examapi.onrender.com/api/questions`, (data) => data)
            
                 if (questions.length > 0) {
                     setGetData(prev => ({ ...prev, isLoading: false }));
